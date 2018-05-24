@@ -4,49 +4,43 @@ ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: Coal_Ore
-    100002: Dirt
-    100004: Gravel
-    100006: Iron_Ore
-    100008: //RootNode
-    100010: Stationary_Water
-    100012: Stone
-    100014: Torch
+    100002: Gravel
+    100004: Iron_Ore
+    100006: //RootNode
+    100008: Stationary_Water
+    100010: Stone
+    100012: Torch
     400000: Coal_Ore
-    400002: Dirt
-    400004: Gravel
-    400006: Iron_Ore
-    400008: //RootNode
-    400010: Stationary_Water
-    400012: Stone
-    400014: Torch
+    400002: Gravel
+    400004: Iron_Ore
+    400006: //RootNode
+    400008: Stationary_Water
+    400010: Stone
+    400012: Torch
     2100000: Coal_Ore
-    2100002: Dirt
-    2100004: Gravel
-    2100006: Iron_Ore
-    2100008: Stationary_Water
-    2100010: Stone
-    2100012: Torch
+    2100002: Gravel
+    2100004: Iron_Ore
+    2100006: Stationary_Water
+    2100008: Stone
+    2100010: Torch
     2300000: Coal_Ore
-    2300002: Dirt
-    2300004: Gravel
-    2300006: Iron_Ore
-    2300008: Stationary_Water
-    2300010: Stone
-    2300012: Torch
+    2300002: Gravel
+    2300004: Iron_Ore
+    2300006: Stationary_Water
+    2300008: Stone
+    2300010: Torch
     3300000: Coal_Ore
-    3300002: Dirt
-    3300004: Gravel
-    3300006: Iron_Ore
-    3300008: Stationary_Water
-    3300010: Stone
-    3300012: Torch
+    3300002: Gravel
+    3300004: Iron_Ore
+    3300006: Stationary_Water
+    3300008: Stone
+    3300010: Torch
     4300000: Coal_Ore
-    4300002: Dirt
-    4300004: Gravel
-    4300006: Iron_Ore
-    4300008: Stationary_Water
-    4300010: Stone
-    4300012: Torch
+    4300002: Gravel
+    4300004: Iron_Ore
+    4300006: Stationary_Water
+    4300008: Stone
+    4300010: Torch
   externalObjects: {}
   materials:
     importMaterials: 1

@@ -38,6 +38,8 @@ public class Node : MonoBehaviour
 
     public LayerMask obstacleLayer;
 
+    public bool isLevelGoal = false;
+
     void Awake()
     {
         // find reference to the Board component
@@ -176,7 +178,6 @@ public class Node : MonoBehaviour
 
         if (Physics.Raycast(transform.position, checkDirection, out raycastHit, Board.spacing + .1f, obstacleLayer))
         {
-            Debug.Log("Node FindObstacle: Hit an obstacle from " + this.name + " to " + target.name);
             return raycastHit.collider.GetComponent<Obstacle>();
         }
         return null;
