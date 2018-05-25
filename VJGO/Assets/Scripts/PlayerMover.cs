@@ -21,9 +21,12 @@ public class PlayerMover : MonoBehaviour {
 
     Board m_board;
 
+    PlayerCompass m_playerCompass;
+
     private void Awake()
     {
         m_board = Object.FindObjectOfType<Board>().GetComponent<Board>();
+        m_playerCompass = Object.FindObjectOfType<PlayerCompass>().GetComponent<PlayerCompass>();
     }
 
     // Use this for initialization
@@ -51,6 +54,10 @@ public class PlayerMover : MonoBehaviour {
     // coroutine used to move the player
     IEnumerator MoveRoutine(Vector3 destinationPos, float delayTime)
     {
+        if (m_playerCompass != null)
+        {
+            m_playerCompass.ShowArrows(false);
+        }
         // we are moving
         isMoving = true;
 
@@ -85,7 +92,12 @@ public class PlayerMover : MonoBehaviour {
         isMoving = false;
 
         UpdateBoard();
-    
+
+        if (m_playerCompass != null)
+        {
+            m_playerCompass.ShowArrows(true);
+        }
+
     }
 	
     // move the player one space in the negative X direction
