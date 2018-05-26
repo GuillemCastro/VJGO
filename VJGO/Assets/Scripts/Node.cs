@@ -100,6 +100,16 @@ public class Node : MonoBehaviour
         return nList;
     }
 
+    public Node FindNeighborAt(List<Node> nodes, Vector2 dir)
+    {
+        return nodes.Find(n => n.Coordinate == Coordinate + dir);
+    }
+
+    public Node FindNeighborAt(Vector2 dir)
+    {
+        return FindNeighborAt(NeighborNodes, dir);
+    }
+
     public void InitNode()
     {
         // if the Node has not been activated yet...

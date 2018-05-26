@@ -3,11 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using System.Linq;
+
+[System.Serializable]
+public enum Turn
+{
+    Player,
+    Enemy
+}
 
 public class GameManager : MonoBehaviour {
 
     Board m_board;
     PlayerManager m_player;
+
+    List<EnemyManager> m_enemies;
+
+    Turn m_currentTurn = Turn.Player;
+    public Turn CurrentTurn { get { return m_currentTurn; } }
 
     bool m_hasLevelStarted = false;
     bool m_isGamePlaying = false;
@@ -72,11 +85,15 @@ public class GameManager : MonoBehaviour {
     public UnityEvent startLevelEvent;
     public UnityEvent playLevelEvent;
     public UnityEvent endLevelEvent;
+    public UnityEvent loseLevelEvent;
 
     private void Awake()
     {
         m_board = Object.FindObjectOfType<Board>().GetComponent<Board>();
         m_player = Object.FindObjectOfType<PlayerManager>().GetComponent<PlayerManager>();
+
+        EnemyManager[] enemies = GameObject.FindObjectsOfType<EnemyManager>() as EnemyManager[];
+        m_enemies = enemies.ToList();
 
     }
 
@@ -138,6 +155,25 @@ public class GameManager : MonoBehaviour {
         Debug.Log("WIIIIIN! =====");
     }
 
+    public void LoseLevel()
+    {
+        StartCoroutine(LoseLevelRoutine());
+    }
+
+    IEnumerator LoseLevelRoutine()
+    {
+        m_isGameOver = true;
+        if (loseLevelEvent != null)
+        {
+            loseLevelEvent.Invoke();
+        }
+        yield return new WaitForSeconds(2f);
+
+        Debug.Log("Level LOST!");
+
+        RestartLevel();
+    }
+
     IEnumerator EndLevelRoutine()
     {
         Debug.Log("End Level");
@@ -173,5 +209,56 @@ public class GameManager : MonoBehaviour {
             return m_board.PlayerNode == m_board.GoalNode;
         }
         return false;
+    }
+
+    void PlayPlayerTurn()
+    {
+        m_currentTurn = Turn.Player;
+        m_player.isTurnComplete = false;
+    }
+
+    void PlayEnemyTurn()
+    {
+        m_currentTurn = Turn.Enemy;
+
+        foreach (EnemyManager enemy in m_enemies)
+        {
+            if (enemy != null)
+            {
+                enemy.isTurnComplete = false;
+
+                enemy.PlayTurn();
+            }
+        }
+    }
+
+    bool IsEnemyTurnComplete()
+    {
+        foreach (EnemyManager enemy in m_enemies)
+        {
+            if (!enemy.isTurnComplete)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void UpdateTurn()
+    {
+        if (m_currentTurn == Turn.Player && m_player != null)
+        {
+            if (m_player.isTurnComplete)
+            {
+                PlayEnemyTurn();
+            }
+        }
+        else if (m_currentTurn == Turn.Enemy)
+        {
+            if (IsEnemyTurnComplete())
+            {
+                PlayPlayerTurn();
+            }
+        }
     }
 }
