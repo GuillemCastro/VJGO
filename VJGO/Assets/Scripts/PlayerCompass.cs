@@ -84,8 +84,20 @@ public class PlayerCompass : MonoBehaviour {
                 }
                 else
                 {
-                    bool activeState = m_board.PlayerNode.LinkedNodes.Contains(neighbor);
-                    m_arrows[i].SetActive(activeState);
+                    Door door = null;
+                    if (neighbor != null)
+                    {
+                        door = m_board.FindDoorAt(new Vector3(neighbor.Coordinate.x, 0f, neighbor.Coordinate.y));
+                    }
+                    if (door != null && !door.IsOpen)
+                    {
+                        m_arrows[i].SetActive(false);
+                    }
+                    else
+                    {
+                        bool activeState = m_board.PlayerNode.LinkedNodes.Contains(neighbor);
+                        m_arrows[i].SetActive(activeState);
+                    }
                 }
             }
         }
