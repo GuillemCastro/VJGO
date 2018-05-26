@@ -4,54 +4,45 @@ using UnityEngine;
 
 public class Door : MonoBehaviour {
 
-    public float delay = 1f;
-    public iTween.EaseType easeType = iTween.EaseType.easeInExpo;
-    public float time = 2f;
+    Vector2 m_coordinate;
+    public Vector2 Coordinate { get { return Utility.Vector2Round(m_coordinate); } }
 
-    AudioSource audioSource;
+    Board m_board;
 
-    bool m_open = false;
+    Hinge m_hinge;
 
-    public bool IsOpen { get { return m_open; } }
+    public bool IsOpen {
+        get
+        {
+            if (m_hinge != null)
+            {
+                return m_hinge.IsOpen;
+            }
+            return false;
+        }
+    }
 
     private void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
+        m_board = Object.FindObjectOfType<Board>();
+        m_coordinate = new Vector2(transform.position.x, transform.position.z);
+        m_hinge = gameObject.GetComponentInChildren<Hinge>();
     }
 
     public void Open()
     {
-        iTween.RotateAdd(gameObject, iTween.Hash(
-            "y", -90,
-            "delay", delay,
-            "easetype", easeType,
-            "time", time
-            ));
-        if (audioSource != null)
+        if (m_hinge != null)
         {
-            Debug.Log("PLAY SOUND");
-            audioSource.PlayDelayed(delay);
+            m_hinge.Open();
         }
-        m_open = true;
     }
 
     public void Close()
     {
-        m_open = false;
-        iTween.RotateAdd(gameObject, iTween.Hash(
-            "y", 90,
-            "delay", delay,
-            "easetype", easeType,
-            "time", time
-            ));
-
+        if (m_hinge != null)
+        {
+            m_hinge.Close();
+        }
     }
 
-    IEnumerator TestRoutine()
-    {
-        yield return new WaitForSeconds(5f);
-        Open();
-        yield return new WaitForSeconds(2f);
-        //Close();
-    }
 }

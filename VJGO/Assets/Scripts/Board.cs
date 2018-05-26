@@ -19,6 +19,9 @@ public class Board : MonoBehaviour
     List<Node> m_allNodes = new List<Node>();
     public List<Node> AllNodes { get { return m_allNodes; } }
 
+    List<Door> m_allDoors = new List<Door>();
+    public List<Door> AllDoors { get { return m_allDoors; } }
+
     Node m_playerNode;
     public Node PlayerNode { get { return m_playerNode; } }
 
@@ -36,6 +39,7 @@ public class Board : MonoBehaviour
     {
         m_player = Object.FindObjectOfType<PlayerMover>().GetComponent<PlayerMover>();
         GetNodeList();
+        GetDoorList();
         m_goalNode = FindGoalNode();
     }
 
@@ -45,11 +49,23 @@ public class Board : MonoBehaviour
         m_allNodes = new List<Node>(nList);
     }
 
+    public void GetDoorList()
+    {
+        Door[] nList = GameObject.FindObjectsOfType<Door>();
+        m_allDoors = new List<Door>(nList);
+    }
+
     public Node FindNodeAt(Vector3 pos)
     {
 
         Vector2 boardCoord = Utility.Vector2Round(new Vector2(pos.x, pos.z));
         return m_allNodes.Find(n => n.Coordinate == boardCoord);
+    }
+
+    public Door FindDoorAt(Vector3 pos)
+    {
+        Vector2 boardCoord = Utility.Vector2Round(new Vector2(pos.x, pos.z));
+        return m_allDoors.Find(n => n.Coordinate == boardCoord);
     }
 
     public Node FindGoalNode()

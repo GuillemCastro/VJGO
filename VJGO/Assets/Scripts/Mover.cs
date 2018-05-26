@@ -58,6 +58,11 @@ public class Mover : MonoBehaviour
             {
                 if (m_currentNode.LinkedNodes.Contains(targetNode))
                 {
+                    Door door = m_board.FindDoorAt(destinationPos);
+                    if (door != null && !door.IsOpen)
+                    {
+                        return;
+                    }
                     // start the coroutine MoveRoutine
                     StartCoroutine(MoveRoutine(destinationPos, delayTime));
                 }
