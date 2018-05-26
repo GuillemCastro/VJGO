@@ -152,7 +152,7 @@ public class Mover : MonoBehaviour
         }
     }
 
-    void FaceDestination()
+    protected void FaceDestination()
     {
         Vector3 relativePosition = destination - transform.position;
 

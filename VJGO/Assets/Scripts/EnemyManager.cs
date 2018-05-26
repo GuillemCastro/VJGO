@@ -27,7 +27,7 @@ public class EnemyManager : TurnManager {
     IEnumerator PlayTurnRoutine()
     {
         m_enemySensor.UpdateSensor();
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0f);
         m_enemyMover.MoveOneTurn();
         
     }
