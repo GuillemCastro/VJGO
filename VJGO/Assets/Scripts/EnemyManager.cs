@@ -20,11 +20,26 @@ public class EnemyManager : TurnManager {
         m_enemyMover = GetComponent<EnemyMover>();
         m_enemySensor = GetComponent<EnemySensor>();
         m_enemyAttack = GetComponent<EnemyAttack>();
+        
     }
 
     public void PlayTurn()
     {
-        StartCoroutine(PlayTurnRoutine());
+        switch (m_enemyMover.movementType)
+        {
+            case MovementType.Ranged:
+                StartCoroutine(PlayRangedTurnRoutine());
+                break;
+            case MovementType.Stationary:
+                StartCoroutine(PlayTurnRoutine());
+                break;
+            case MovementType.Spinner:
+                StartCoroutine(PlayTurnRoutine());
+                break;
+            case MovementType.Patrol:
+                StartCoroutine(PlayTurnRoutine());
+                break;
+        }
     }
 
     IEnumerator PlayTurnRoutine()
@@ -47,6 +62,27 @@ public class EnemyManager : TurnManager {
                 }
                 m_enemyAttack.Attack();
                 
+            }
+            else
+            {
+                m_enemyMover.MoveOneTurn();
+            }
+        }
+    }
+
+    IEnumerator PlayRangedTurnRoutine()
+    {
+        if (m_gameManager != null && !m_gameManager.IsGameOver)
+        {
+            m_enemySensor.UpdateSensor();
+
+            yield return new WaitForSeconds(0f);
+            if (m_enemySensor.FoundPlayer)
+            {
+                m_gameManager.LoseLevel();
+                
+                m_enemyAttack.Attack();
+
             }
             else
             {

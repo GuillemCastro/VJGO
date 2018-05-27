@@ -6,7 +6,8 @@ public enum MovementType
 {
     Stationary,
     Patrol,
-    Spinner
+    Spinner,
+    Ranged
 }
 
 
@@ -41,6 +42,9 @@ public class EnemyMover : Mover {
                 break;
             case MovementType.Spinner:
                 Spin();
+                break;
+            case MovementType.Ranged:
+                Stand();
                 break;
         }
         Stand();

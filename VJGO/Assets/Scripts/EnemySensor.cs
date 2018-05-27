@@ -2,11 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EnemyType
+{
+    Stationary,
+    Patrol,
+    Spinner,
+    Ranged
+}
+
 public class EnemySensor : MonoBehaviour {
     public Vector3 directionToSearch = new Vector3(0f, 0f, 2f);
 
     Node m_nodeToSearch;
     Board m_board;
+
+    public EnemyType enemyType = EnemyType.Stationary;
 
     bool m_foundPlayer = false;
     public bool FoundPlayer {  get { return m_foundPlayer; } }
@@ -22,10 +32,25 @@ public class EnemySensor : MonoBehaviour {
 
         if (m_board != null)
         {
-            m_nodeToSearch = m_board.FindNodeAt(worldSpacePositionToSearch);
-            if (m_nodeToSearch == m_board.PlayerNode)
+           if (enemyType == EnemyType.Ranged)
             {
-                m_foundPlayer = true;
+                for (int i = 0; i < 3; ++i)
+                {
+                    m_nodeToSearch = m_board.FindNodeAt(worldSpacePositionToSearch);
+                    if (m_nodeToSearch == m_board.PlayerNode)
+                    {
+                        m_foundPlayer = true;
+                    }
+                    worldSpacePositionToSearch += transform.InverseTransformVector(directionToSearch);
+                }
+            }
+            else
+            {
+                m_nodeToSearch = m_board.FindNodeAt(worldSpacePositionToSearch);
+                if (m_nodeToSearch == m_board.PlayerNode)
+                {
+                    m_foundPlayer = true;
+                }
             }
         }
 	}
