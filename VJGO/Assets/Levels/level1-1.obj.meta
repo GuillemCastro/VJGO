@@ -1,114 +1,82 @@
 fileFormatVersion: 2
-guid: 941bcec3300c74849b1c5ea7836a7a64
+guid: 5e9c0ba1f070b55499ca9f970cc1bc7a
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: Clay
-    100002: Coal_Ore
+    100000: Coal_Ore
+    100002: Dandelion
     100004: Dirt
     100006: Grass
     100008: Grass_Block
-    100010: Leaves
-    100012: //RootNode
-    100014: Lily_Pad
-    100016: Stationary_Water
-    100018: Stone
-    100020: Sugar_Cane
-    100022: Vines
+    100010: Gravel
+    100012: Leaves
+    100014: //RootNode
+    100016: Poppy
+    100018: Sand
+    100020: Stationary_Water
+    100022: Stone
     100024: Wood
-    100026: Dandelion
-    100028: Gravel
-    100030: Poppy
-    100032: Sand
-    400000: Clay
-    400002: Coal_Ore
+    400000: Coal_Ore
+    400002: Dandelion
     400004: Dirt
     400006: Grass
     400008: Grass_Block
-    400010: Leaves
-    400012: //RootNode
-    400014: Lily_Pad
-    400016: Stationary_Water
-    400018: Stone
-    400020: Sugar_Cane
-    400022: Vines
+    400010: Gravel
+    400012: Leaves
+    400014: //RootNode
+    400016: Poppy
+    400018: Sand
+    400020: Stationary_Water
+    400022: Stone
     400024: Wood
-    400026: Dandelion
-    400028: Gravel
-    400030: Poppy
-    400032: Sand
-    2100000: ClayMat
-    2100002: Coal_OreMat
-    2100004: DirtMat
-    2100006: GrassMat
-    2100008: Grass_BlockMat
-    2100010: LeavesMat
-    2100012: Lily_PadMat
-    2100014: Stationary_WaterMat
-    2100016: StoneMat
-    2100018: Sugar_CaneMat
-    2100020: VinesMat
-    2100022: WoodMat
-    2100024: Coal_Ore
-    2100026: Dandelion
-    2100028: Dirt
-    2100030: Grass
-    2100032: Grass_Block
-    2100034: Gravel
-    2100036: Leaves
-    2100038: Poppy
-    2100040: Sand
-    2100042: Stationary_Water
-    2100044: Stone
-    2100046: Wood
-    2300000: Clay
-    2300002: Coal_Ore
+    2100000: Coal_Ore
+    2100002: Dandelion
+    2100004: Dirt
+    2100006: Grass
+    2100008: Grass_Block
+    2100010: Gravel
+    2100012: Leaves
+    2100014: Poppy
+    2100016: Sand
+    2100018: Stationary_Water
+    2100020: Stone
+    2100022: Wood
+    2300000: Coal_Ore
+    2300002: Dandelion
     2300004: Dirt
     2300006: Grass
     2300008: Grass_Block
-    2300010: Leaves
-    2300012: Lily_Pad
-    2300014: Stationary_Water
-    2300016: Stone
-    2300018: Sugar_Cane
-    2300020: Vines
+    2300010: Gravel
+    2300012: Leaves
+    2300014: Poppy
+    2300016: Sand
+    2300018: Stationary_Water
+    2300020: Stone
     2300022: Wood
-    2300024: Dandelion
-    2300026: Gravel
-    2300028: Poppy
-    2300030: Sand
-    3300000: Clay
-    3300002: Coal_Ore
+    3300000: Coal_Ore
+    3300002: Dandelion
     3300004: Dirt
     3300006: Grass
     3300008: Grass_Block
-    3300010: Leaves
-    3300012: Lily_Pad
-    3300014: Stationary_Water
-    3300016: Stone
-    3300018: Sugar_Cane
-    3300020: Vines
+    3300010: Gravel
+    3300012: Leaves
+    3300014: Poppy
+    3300016: Sand
+    3300018: Stationary_Water
+    3300020: Stone
     3300022: Wood
-    3300024: Dandelion
-    3300026: Gravel
-    3300028: Poppy
-    3300030: Sand
-    4300000: Clay
-    4300002: Coal_Ore
+    4300000: Coal_Ore
+    4300002: Dandelion
     4300004: Dirt
     4300006: Grass
     4300008: Grass_Block
-    4300010: Leaves
-    4300012: Lily_Pad
-    4300014: Stationary_Water
-    4300016: Stone
-    4300018: Sugar_Cane
-    4300020: Vines
+    4300010: Gravel
+    4300012: Leaves
+    4300014: Poppy
+    4300016: Sand
+    4300018: Stationary_Water
+    4300020: Stone
     4300022: Wood
-    4300024: Dandelion
-    4300026: Gravel
-    4300028: Poppy
-    4300030: Sand
   externalObjects: {}
   materials:
     importMaterials: 1
