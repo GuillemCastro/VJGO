@@ -7,11 +7,22 @@ public class PlayerDeath : MonoBehaviour {
 
     public string playerDeathTrigger = "IsDead";
 
+    AudioSource audioSource;
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     public void Die()
     {
         if (playerAnimController != null)
         {
             playerAnimController.SetTrigger(playerDeathTrigger);
+        }
+        if (audioSource != null)
+        {
+            audioSource.Play();
         }
     }
 }

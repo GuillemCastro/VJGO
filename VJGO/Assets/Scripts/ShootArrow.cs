@@ -9,9 +9,12 @@ public class ShootArrow : MonoBehaviour {
     public float iTweenTime = 0.5f;
     public iTween.EaseType iTweenEaseType = iTween.EaseType.easeInOutExpo;
 
+    AudioSource audioSource;
+
     void Awake()
     {
         arrow.GetComponentInChildren<Renderer>().enabled = false;
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void ShootArrowAt (Vector3 destination)
@@ -32,6 +35,10 @@ public class ShootArrow : MonoBehaviour {
             "easetype", iTweenEaseType,
             "time", iTweenTime
             ));
+        if (audioSource != null)
+        {
+            audioSource.Play();
+        }
 
         yield return new WaitForSeconds(iTweenTime);
 
