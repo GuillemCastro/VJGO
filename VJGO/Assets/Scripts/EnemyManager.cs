@@ -11,6 +11,9 @@ public class EnemyManager : TurnManager {
     EnemyMover m_enemyMover;
     EnemySensor m_enemySensor;
     EnemyAttack m_enemyAttack;
+
+    ShootArrow m_skeletonArrow;
+
     Board m_board;
     bool m_isDead = false;
     public bool IsDead {  get { return m_isDead; } }
@@ -25,7 +28,9 @@ public class EnemyManager : TurnManager {
         m_enemyMover = GetComponent<EnemyMover>();
         m_enemySensor = GetComponent<EnemySensor>();
         m_enemyAttack = GetComponent<EnemyAttack>();
-        
+        m_skeletonArrow = GetComponent<ShootArrow>();
+
+
     }
 
     public void PlayTurn()
@@ -91,7 +96,17 @@ public class EnemyManager : TurnManager {
             if (m_enemySensor.FoundPlayer)
             {
                 m_gameManager.LoseLevel();
-                
+
+                if (m_skeletonArrow != null)
+                {
+                    Vector3 playerPosition = new Vector3(m_board.PlayerNode.Coordinate.x, 0f, m_board.PlayerNode.Coordinate.y);
+
+                    m_skeletonArrow.ShootArrowAt(playerPosition);
+                }
+                while (m_skeletonArrow.isMoving)
+                {
+                    yield return null;
+                }
                 m_enemyAttack.Attack();
 
             }
