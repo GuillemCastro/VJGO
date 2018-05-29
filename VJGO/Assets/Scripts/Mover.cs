@@ -59,7 +59,8 @@ public class Mover : MonoBehaviour
                 if (m_currentNode.LinkedNodes.Contains(targetNode))
                 {
                     Door door = m_board.FindDoorAt(destinationPos);
-                    if (door != null && !door.IsOpen)
+                    Piston piston = m_board.FindPistonAt(destinationPos);
+                    if ((door != null && !door.IsOpen) || (piston != null && !piston.IsDown))
                     {
                         return;
                     }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Door : MonoBehaviour {
+public class Door : RedstoneActivable {
 
     Vector2 m_coordinate;
     public Vector2 Coordinate { get { return Utility.Vector2Round(m_coordinate); } }
@@ -27,6 +27,11 @@ public class Door : MonoBehaviour {
         m_board = Object.FindObjectOfType<Board>();
         m_coordinate = new Vector2(transform.position.x, transform.position.z);
         m_hinge = gameObject.GetComponentInChildren<Hinge>();
+    }
+
+    public override void Activate()
+    {
+        Open();
     }
 
     public void Open()

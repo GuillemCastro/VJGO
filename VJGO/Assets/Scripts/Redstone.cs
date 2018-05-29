@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Redstone : MonoBehaviour {
+public class Redstone : RedstoneActivable {
 
     public Material ActiveMaterial;
     public Material NormalMaterial;
@@ -12,7 +12,7 @@ public class Redstone : MonoBehaviour {
 	void Start () {
 	}
 	
-	public void Activate()
+	public override void Activate()
     {
         StartCoroutine(ActivateRoutine());
     }

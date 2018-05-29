@@ -84,12 +84,18 @@ public class PlayerCompass : MonoBehaviour {
                 }
                 else
                 {
+                    Piston piston = null;
                     Door door = null;
                     if (neighbor != null)
                     {
                         door = m_board.FindDoorAt(new Vector3(neighbor.Coordinate.x, 0f, neighbor.Coordinate.y));
+                        piston = m_board.FindPistonAt(new Vector3(neighbor.Coordinate.x, 0f, neighbor.Coordinate.y));
                     }
                     if (door != null && !door.IsOpen)
+                    {
+                        m_arrows[i].SetActive(false);
+                    }
+                    else if (piston != null && !piston.IsDown)
                     {
                         m_arrows[i].SetActive(false);
                     }
