@@ -28,6 +28,8 @@ public class Mover : MonoBehaviour
 
     protected Node m_currentNode;
 
+    public Node CurrentNode { get { return m_currentNode; } }
+
     public UnityEvent finishMovementEvent;
 
     protected virtual void Awake()
