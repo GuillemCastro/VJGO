@@ -7,6 +7,7 @@ public class StatsManager : MonoBehaviour {
 
     public UnityEvent DiamondCollected;
     public uint DiamondsCollected = 0;
+    public uint EnemiesKilled = 0;
 
     Board m_board;
 
@@ -26,6 +27,11 @@ public class StatsManager : MonoBehaviour {
                 DiamondCollected.Invoke();
             }
         }
+    }
+
+    public void OnEnemyKilled()
+    {
+        ++EnemiesKilled;
     }
 
 }

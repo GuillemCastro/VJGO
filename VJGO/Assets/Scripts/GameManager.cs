@@ -172,7 +172,7 @@ public class GameManager : MonoBehaviour {
 
         Debug.Log("Level LOST!");
 
-        RestartLevel();
+        //RestartLevel();
     }
 
     IEnumerator EndLevelRoutine()
@@ -189,10 +189,10 @@ public class GameManager : MonoBehaviour {
         {
             yield return null;
         }
-        RestartLevel();
+        //RestartLevel();
     }
 
-    void RestartLevel()
+    public void RestartLevel()
     {
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
@@ -261,5 +261,10 @@ public class GameManager : MonoBehaviour {
                 PlayPlayerTurn();
             }
         }
+    }
+
+    public void LoadNextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

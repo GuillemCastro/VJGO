@@ -26,6 +26,11 @@ public class Hinge : MonoBehaviour {
 
     public void Open()
     {
+        StartCoroutine(OpenRoutine());
+    }
+
+    IEnumerator OpenRoutine()
+    {
         iTween.RotateAdd(gameObject, iTween.Hash(
             "y", -90,
             "delay", delay,
@@ -37,6 +42,7 @@ public class Hinge : MonoBehaviour {
             Debug.Log("PLAY SOUND");
             audioSource.PlayDelayed(delay);
         }
+        yield return new WaitForSeconds(delay);
         m_open = true;
     }
 
