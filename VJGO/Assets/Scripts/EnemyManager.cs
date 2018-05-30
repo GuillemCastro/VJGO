@@ -12,6 +12,8 @@ public class EnemyManager : TurnManager {
     EnemySensor m_enemySensor;
     EnemyAttack m_enemyAttack;
 
+    GodModeManager godMode;
+
     ShootArrow m_skeletonArrow;
 
     Board m_board;
@@ -30,6 +32,7 @@ public class EnemyManager : TurnManager {
         m_enemyAttack = GetComponent<EnemyAttack>();
         m_skeletonArrow = GetComponent<ShootArrow>();
 
+        godMode = Object.FindObjectOfType<GodModeManager>();
 
     }
 
@@ -67,7 +70,10 @@ public class EnemyManager : TurnManager {
             yield return new WaitForSeconds(0f);
             if (m_enemySensor.FoundPlayer)
             {
-                m_gameManager.LoseLevel();
+                if (godMode == null || (godMode != null && !godMode.IsGodModeActive))
+                {
+                    m_gameManager.LoseLevel();
+                }
 
                 Vector3 playerPosition = new Vector3(m_board.PlayerNode.Coordinate.x, 0f, m_board.PlayerNode.Coordinate.y);
                 m_enemyMover.Move(playerPosition, 0f);
@@ -76,8 +82,14 @@ public class EnemyManager : TurnManager {
                 {
                     yield return null;
                 }
-                m_enemyAttack.Attack();
-                
+                if (godMode == null || (godMode != null && !godMode.IsGodModeActive))
+                {
+                    m_enemyAttack.Attack();
+                }
+                if (godMode != null && godMode.IsGodModeActive)
+                {
+                    m_enemyMover.Stand();
+                }
             }
             else
             {
@@ -95,7 +107,10 @@ public class EnemyManager : TurnManager {
             yield return new WaitForSeconds(0f);
             if (m_enemySensor.FoundPlayer)
             {
-                m_gameManager.LoseLevel();
+                if (godMode == null || (godMode != null && !godMode.IsGodModeActive))
+                {
+                    m_gameManager.LoseLevel();
+                }
 
                 if (m_skeletonArrow != null)
                 {
@@ -107,8 +122,14 @@ public class EnemyManager : TurnManager {
                 {
                     yield return null;
                 }
-                m_enemyAttack.Attack();
-
+                if (godMode == null || (godMode != null && !godMode.IsGodModeActive))
+                {
+                    m_enemyAttack.Attack();
+                }
+                if (godMode != null && godMode.IsGodModeActive)
+                {
+                    m_enemyMover.Stand();
+                }
             }
             else
             {

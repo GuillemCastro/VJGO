@@ -87,7 +87,7 @@ public class EnemyMover : Mover {
         base.finishMovementEvent.Invoke();
     }
 
-    void Stand()
+    public void Stand()
     {
         StartCoroutine(StandRoutine());
     }
