@@ -24,12 +24,28 @@ public class TitleManager : MonoBehaviour {
 
     public void LoadGame()
     {
-        StartCoroutine(LoadGameRoutine());
+        StartCoroutine(LoadGameRoutine(1));
     }
 
-    IEnumerator LoadGameRoutine()
+    IEnumerator LoadGameRoutine(int index)
     {
+        Debug.Log("Index" + index);
         yield return new WaitForSeconds(.8f);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(index);
+    }
+
+    public void LoadLevel1()
+    {
+        StartCoroutine(LoadGameRoutine(1));
+    }
+
+    public void LoadLevel2()
+    {
+        StartCoroutine(LoadGameRoutine(2));
+    }
+
+    public void LoadLevel3()
+    {
+        StartCoroutine(LoadGameRoutine(3));
     }
 }
