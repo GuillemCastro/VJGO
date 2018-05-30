@@ -1200,6 +1200,12 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1922549066}
+    - target: {fileID: 114499427865349348, guid: 057549679de5af54daad4cca88a3d01e,
+        type: 2}
+      propertyPath: m_Text
+      value: "Reach the end \nALIVE\n\nSPIDERS x 1\nZOMBIES x 1\nSKELETONS x 1\n\nDIAMONDS
+        x 3"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 057549679de5af54daad4cca88a3d01e, type: 2}
   m_IsPrefabParent: 0
@@ -1258,6 +1264,11 @@ Prefab:
       propertyPath: finishMovementEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1642185268}
+    - target: {fileID: 114113202948539838, guid: 9eb7c91ddc41ab64bb4b744a78bd545e,
+        type: 2}
+      propertyPath: moveSpeed
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9eb7c91ddc41ab64bb4b744a78bd545e, type: 2}
   m_IsPrefabParent: 0
