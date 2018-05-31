@@ -14,6 +14,7 @@ public class EnemySensor : MonoBehaviour {
     public Vector3 directionToSearch = new Vector3(0f, 0f, 2f);
 
     Node m_nodeToSearch;
+    Node m_currentNode;
     Board m_board;
 
     public EnemyType enemyType = EnemyType.Stationary;
@@ -37,7 +38,8 @@ public class EnemySensor : MonoBehaviour {
                 for (int i = 0; i < 3; ++i)
                 {
                     m_nodeToSearch = m_board.FindNodeAt(worldSpacePositionToSearch);
-                    if (m_nodeToSearch == m_board.PlayerNode)
+                    m_currentNode = m_board.FindNodeAt(transform.position);
+                    if (m_nodeToSearch == m_board.PlayerNode && m_currentNode.LinkedNodes.Contains(m_nodeToSearch))
                     {
                         m_foundPlayer = true;
                     }
@@ -47,7 +49,8 @@ public class EnemySensor : MonoBehaviour {
             else
             {
                 m_nodeToSearch = m_board.FindNodeAt(worldSpacePositionToSearch);
-                if (m_nodeToSearch == m_board.PlayerNode)
+                m_currentNode = m_board.FindNodeAt(transform.position);
+                if (m_nodeToSearch == m_board.PlayerNode && m_currentNode.LinkedNodes.Contains(m_nodeToSearch))
                 {
                     m_foundPlayer = true;
                 }
