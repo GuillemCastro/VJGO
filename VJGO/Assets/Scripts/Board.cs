@@ -25,6 +25,9 @@ public class Board : MonoBehaviour
     List<Diamond> m_allDiamonds = new List<Diamond>();
     public List<Diamond> AllDiamonds { get { return m_allDiamonds; } }
 
+    List<Stick> m_allSticks = new List<Stick>();
+    public List<Stick> AllSticks { get { return m_allSticks; } }
+
     List<Piston> m_allPistons = new List<Piston>();
     public List<Piston> AllPistons { get { return m_allPistons; } }
 
@@ -56,6 +59,8 @@ public class Board : MonoBehaviour
         GetNodeList();
         GetDoorList();
         GetDiamondList();
+        GetPistonList();
+        GetStickList();
         m_goalNode = FindGoalNode();
     }
 
@@ -75,6 +80,12 @@ public class Board : MonoBehaviour
     {
         Diamond[] nList = GameObject.FindObjectsOfType<Diamond>();
         m_allDiamonds = new List<Diamond>(nList);
+    }
+
+    public void GetStickList()
+    {
+        Stick[] nList = GameObject.FindObjectsOfType<Stick>();
+        m_allSticks = new List<Stick>(nList);
     }
 
     public void GetPistonList()
@@ -100,6 +111,12 @@ public class Board : MonoBehaviour
     {
         Vector2 boardCoord = Utility.Vector2Round(new Vector2(pos.x, pos.z));
         return m_allDiamonds.Find(n => n.Coordinate == boardCoord);
+    }
+
+    public Stick FindStickAt(Vector3 pos)
+    {
+        Vector2 boardCoord = Utility.Vector2Round(new Vector2(pos.x, pos.z));
+        return m_allSticks.Find(s => s.Coordinate == boardCoord);
     }
 
     public Piston FindPistonAt(Vector3 pos)

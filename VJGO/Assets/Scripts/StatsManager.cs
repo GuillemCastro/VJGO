@@ -7,14 +7,25 @@ using UnityEngine.SceneManagement;
 public class StatsManager : MonoBehaviour {
 
     public UnityEvent DiamondCollected;
+    public UnityEvent StickCollected;
+
+    public UnityEvent AllCollected;
+
+    public uint SticksCollected = 0;
     public uint DiamondsCollected = 0;
     public uint EnemiesKilled = 0;
+
+    public uint SticksCollectedLevel = 0;
+    public uint DiamondsCollectedLevel = 0;
 
     Board m_board;
     PlayerMover m_player;
     List<EnemyManager> m_enemies;
     List<Diamond> m_diamonds;
+    List<Stick> m_sticks;
     GameManager m_game;
+
+    AllCollectedUI m_collectedUI;
 
     private void Awake()
     {
@@ -35,9 +46,27 @@ public class StatsManager : MonoBehaviour {
                 {
                     diamond.Collect();
                     ++DiamondsCollected;
+                    ++DiamondsCollectedLevel;
                     if (DiamondCollected != null)
                     {
                         DiamondCollected.Invoke();
+                    }
+                }
+            }
+        }
+        if (m_sticks != null)
+        {
+            List<Stick> ss = m_sticks.FindAll(s => s.Coordinate == m_board.PlayerNode.Coordinate);
+            foreach(Stick s in ss)
+            {
+                if (s.isActiveAndEnabled)
+                {
+                    s.Collect();
+                    ++SticksCollected;
+                    ++SticksCollectedLevel;
+                    if (StickCollected != null)
+                    {
+                        StickCollected.Invoke();
                     }
                 }
             }
@@ -51,6 +80,7 @@ public class StatsManager : MonoBehaviour {
         if (m_game != null)
         {
             m_game.setupEvent.AddListener(this.OnLevelStart);
+            m_game.endLevelEvent.AddListener(this.OnLevelEnd);
         }
     }
 
@@ -60,6 +90,11 @@ public class StatsManager : MonoBehaviour {
         m_board = Object.FindObjectOfType<Board>();
         m_player = Object.FindObjectOfType<PlayerMover>();
         m_enemies = new List<EnemyManager>(Object.FindObjectsOfType<EnemyManager>());
+        m_collectedUI = Object.FindObjectOfType<AllCollectedUI>();
+        if (m_collectedUI != null)
+        {
+            m_collectedUI.gameObject.SetActive(false);
+        }
         if (m_player != null)
         {
             Debug.Log("add finish movement");
@@ -70,6 +105,7 @@ public class StatsManager : MonoBehaviour {
             Debug.Log("find diamonds");
             m_board = m_board.GetComponent<Board>();
             m_diamonds = m_board.AllDiamonds;
+            m_sticks = m_board.AllSticks;
         }
         if (m_enemies != null)
         {
@@ -80,13 +116,31 @@ public class StatsManager : MonoBehaviour {
         }
     }
 
+    void OnLevelEnd()
+    {
+        if (SticksCollected == 2 && DiamondsCollected == 10)
+        {
+            if (m_collectedUI != null)
+            {
+                m_collectedUI.gameObject.SetActive(true);
+            }
+            if (AllCollected != null)
+            {
+                AllCollected.Invoke();
+            }
+        }
+    }
+
     void OnLevelUnload(Scene scene)
     {
         m_board = null;
         m_player = null;
         m_diamonds = null;
+        m_sticks = null;
         EnemiesKilled = 0;
         m_game = null;
+        SticksCollectedLevel = 0;
+        DiamondsCollectedLevel = 0;
     }
 
     public void OnEnemyKilled()

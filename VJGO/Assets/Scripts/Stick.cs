@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Diamond : MonoBehaviour {
+public class Stick : MonoBehaviour {
 
     public float delay = 0f;
     public float time = 0.5f;
@@ -12,7 +12,7 @@ public class Diamond : MonoBehaviour {
     public iTween.LoopType loopType = iTween.LoopType.pingPong;
 
     public Vector2 Coordinate;
-    
+
     AudioSource audio;
 
     private void Awake()
@@ -22,7 +22,6 @@ public class Diamond : MonoBehaviour {
     }
 
     void Start () {
-
         iTween.MoveBy(gameObject, iTween.Hash(
             "y", movement,
             "delay", delay,
@@ -30,8 +29,7 @@ public class Diamond : MonoBehaviour {
             "looptype", loopType,
             "time", time
             ));
-
-	}
+    }
 
     public void Collect()
     {
@@ -53,5 +51,4 @@ public class Diamond : MonoBehaviour {
             audio.Play();
         }
     }
-
 }
