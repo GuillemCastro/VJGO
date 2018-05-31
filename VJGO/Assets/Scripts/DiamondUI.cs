@@ -7,23 +7,32 @@ public class DiamondUI : MonoBehaviour {
 
     uint m_DiamondCount = 0;
     Text m_DiamondText;
-    
+    StatsManager statsManager;
 
     private void Awake()
     {
         m_DiamondText = GetComponentInChildren<Text>();
+        statsManager = Object.FindObjectOfType<StatsManager>();
+        if (statsManager != null)
+        {
+            statsManager.DiamondCollected.AddListener(this.AddDiamondCount);
+        }
     }
 
     private void Start()
     {
-        string text = string.Format("x {0}", m_DiamondCount);
+        if (statsManager != null)
+        {
+            m_DiamondCount = statsManager.DiamondsCollected;
+        }
+        string text = string.Format("{0}/10", m_DiamondCount);
         m_DiamondText.text = text;
     }
 
     public void AddDiamondCount()
     {
-        ++m_DiamondCount;
-        string text = string.Format("x {0}", m_DiamondCount);
+        m_DiamondCount = statsManager.DiamondsCollected;
+        string text = string.Format("{0}/10", m_DiamondCount);
         m_DiamondText.text = text;
     }
 }
