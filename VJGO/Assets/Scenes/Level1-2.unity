@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -586,6 +586,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 114804668047862988, guid: d1fec583a8a34d64cadf6df0dac96894,
         type: 2}
+      propertyPath: setupEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114804668047862988, guid: d1fec583a8a34d64cadf6df0dac96894,
+        type: 2}
       propertyPath: endLevelEvent.m_PersistentCalls.m_Calls.Array.size
       value: 5
       objectReference: {fileID: 0}
@@ -849,6 +854,51 @@ Prefab:
     - target: {fileID: 1682720006827990, guid: d1fec583a8a34d64cadf6df0dac96894, type: 2}
       propertyPath: m_Name
       value: GameManager (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114804668047862988, guid: d1fec583a8a34d64cadf6df0dac96894,
+        type: 2}
+      propertyPath: setupEvent.m_PersistentCalls.m_Calls.Array.data[4].m_Target
+      value: 
+      objectReference: {fileID: 672354578}
+    - target: {fileID: 114804668047862988, guid: d1fec583a8a34d64cadf6df0dac96894,
+        type: 2}
+      propertyPath: setupEvent.m_PersistentCalls.m_Calls.Array.data[4].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114804668047862988, guid: d1fec583a8a34d64cadf6df0dac96894,
+        type: 2}
+      propertyPath: setupEvent.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 114804668047862988, guid: d1fec583a8a34d64cadf6df0dac96894,
+        type: 2}
+      propertyPath: setupEvent.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114804668047862988, guid: d1fec583a8a34d64cadf6df0dac96894,
+        type: 2}
+      propertyPath: setupEvent.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114804668047862988, guid: d1fec583a8a34d64cadf6df0dac96894,
+        type: 2}
+      propertyPath: setupEvent.m_PersistentCalls.m_Calls.Array.data[5].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 114804668047862988, guid: d1fec583a8a34d64cadf6df0dac96894,
+        type: 2}
+      propertyPath: setupEvent.m_PersistentCalls.m_Calls.Array.data[5].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114804668047862988, guid: d1fec583a8a34d64cadf6df0dac96894,
+        type: 2}
+      propertyPath: setupEvent.m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114804668047862988, guid: d1fec583a8a34d64cadf6df0dac96894,
+        type: 2}
+      propertyPath: setupEvent.m_PersistentCalls.m_Calls.Array.data[5].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d1fec583a8a34d64cadf6df0dac96894, type: 2}
@@ -1536,7 +1586,8 @@ Prefab:
       propertyPath: m_AnchoredPosition.y
       value: 1.0915527
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114581851148038132, guid: 057549679de5af54daad4cca88a3d01e, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 057549679de5af54daad4cca88a3d01e, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &672354578 stripped
