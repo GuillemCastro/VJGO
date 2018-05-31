@@ -48,4 +48,14 @@ public class TitleManager : MonoBehaviour {
     {
         StartCoroutine(LoadGameRoutine(3));
     }
+
+    public void LoadLevel4()
+    {
+        StartCoroutine(LoadGameRoutine(4));
+    }
+
+    public void LoadLevel5()
+    {
+        StartCoroutine(LoadGameRoutine(5));
+    }
 }

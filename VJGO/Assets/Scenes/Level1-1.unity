@@ -228,13 +228,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 43091744fc1d2f24185cb4166fa42b09, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.91
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 80
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -1195,6 +1195,12 @@ Prefab:
       propertyPath: cameraPostProcess
       value: 
       objectReference: {fileID: 30030777}
+    - target: {fileID: 114499427865349348, guid: 057549679de5af54daad4cca88a3d01e,
+        type: 2}
+      propertyPath: m_Text
+      value: "Reach the end \nALIVE\n\nSPIDERS x 1\nZOMBIES x 1\nSKELETONS x 0\n\nDIAMONDS
+        x 2"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 057549679de5af54daad4cca88a3d01e, type: 2}
   m_IsPrefabParent: 0
