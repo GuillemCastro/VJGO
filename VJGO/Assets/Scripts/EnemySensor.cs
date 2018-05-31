@@ -29,7 +29,7 @@ public class EnemySensor : MonoBehaviour {
 	
 	// Update is called once per frame
 	public void UpdateSensor() {
-        Vector3 worldSpacePositionToSearch = transform.InverseTransformVector(directionToSearch) + transform.position;
+        Vector3 worldSpacePositionToSearch = transform.TransformVector(directionToSearch) + transform.position;
 
         if (m_board != null)
         {
@@ -43,7 +43,7 @@ public class EnemySensor : MonoBehaviour {
                     {
                         m_foundPlayer = true;
                     }
-                    worldSpacePositionToSearch += transform.InverseTransformVector(directionToSearch);
+                    worldSpacePositionToSearch += transform.TransformVector(directionToSearch);
                 }
             }
             else
