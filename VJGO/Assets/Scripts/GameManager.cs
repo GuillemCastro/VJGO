@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour {
     bool m_isGameOver = false;
     bool m_hasLevelFinished = false;
 
+    public bool restart = false;
+
     public bool HasLevelStarted
     {
         get
@@ -194,6 +196,11 @@ public class GameManager : MonoBehaviour {
 
     public void RestartLevel()
     {
+        StatsManager sm = Object.FindObjectOfType<StatsManager>();
+        if (sm != null)
+        {
+            sm.RestartLevelStats();
+        }
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
     }

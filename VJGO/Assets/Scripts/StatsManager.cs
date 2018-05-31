@@ -11,9 +11,12 @@ public class StatsManager : MonoBehaviour {
 
     public UnityEvent AllCollected;
 
-    public uint SticksCollected = 0;
-    public uint DiamondsCollected = 0;
+    public uint SticksCollected { get { return m_totalSticks + SticksCollectedLevel; } }
+    public uint DiamondsCollected { get { return m_totalDiamonds + DiamondsCollectedLevel; } }
     public uint EnemiesKilled = 0;
+
+    uint m_totalSticks = 0;
+    uint m_totalDiamonds = 0;
 
     public uint SticksCollectedLevel = 0;
     public uint DiamondsCollectedLevel = 0;
@@ -26,6 +29,10 @@ public class StatsManager : MonoBehaviour {
     GameManager m_game;
 
     AllCollectedUI m_collectedUI;
+
+    Scene m_scene;
+
+    bool restart = false;
 
     private void Awake()
     {
@@ -45,7 +52,6 @@ public class StatsManager : MonoBehaviour {
                 if (diamond.isActiveAndEnabled)
                 {
                     diamond.Collect();
-                    ++DiamondsCollected;
                     ++DiamondsCollectedLevel;
                     if (DiamondCollected != null)
                     {
@@ -62,7 +68,6 @@ public class StatsManager : MonoBehaviour {
                 if (s.isActiveAndEnabled)
                 {
                     s.Collect();
-                    ++SticksCollected;
                     ++SticksCollectedLevel;
                     if (StickCollected != null)
                     {
@@ -82,6 +87,8 @@ public class StatsManager : MonoBehaviour {
             m_game.setupEvent.AddListener(this.OnLevelStart);
             m_game.endLevelEvent.AddListener(this.OnLevelEnd);
         }
+        m_scene = scene;
+        
     }
 
     void OnLevelStart()
@@ -139,8 +146,14 @@ public class StatsManager : MonoBehaviour {
         m_sticks = null;
         EnemiesKilled = 0;
         m_game = null;
+        if (!restart)
+        {
+            m_totalDiamonds += DiamondsCollectedLevel;
+            m_totalSticks += SticksCollectedLevel;
+        }
         SticksCollectedLevel = 0;
         DiamondsCollectedLevel = 0;
+        restart = false;
     }
 
     public void OnEnemyKilled()
@@ -148,4 +161,8 @@ public class StatsManager : MonoBehaviour {
         ++EnemiesKilled;
     }
 
+    public void RestartLevelStats()
+    {
+        restart = true;
+    }
 }
