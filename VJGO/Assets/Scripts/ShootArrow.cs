@@ -11,6 +11,8 @@ public class ShootArrow : MonoBehaviour {
 
     AudioSource audioSource;
 
+    public AudioClip arrowClip;
+
     void Awake()
     {
         arrow.GetComponentInChildren<Renderer>().enabled = false;
@@ -35,9 +37,9 @@ public class ShootArrow : MonoBehaviour {
             "easetype", iTweenEaseType,
             "time", iTweenTime
             ));
-        if (audioSource != null)
+        if (audioSource != null && arrowClip != null)
         {
-            audioSource.Play();
+            audioSource.PlayOneShot(arrowClip);
         }
 
         yield return new WaitForSeconds(iTweenTime);
