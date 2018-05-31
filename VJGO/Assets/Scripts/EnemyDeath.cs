@@ -14,10 +14,16 @@ public class EnemyDeath : MonoBehaviour {
     public float iTweenDelay = 0f;
     public iTween.EaseType easeType = iTween.EaseType.easeInOutQuint;
     public float moveTime = 0.5f;
+
+    public AudioClip deathClip;
+
+    AudioSource audioSource;
+
 	// Use this for initialization
 	void Awake()
     {
         m_board = Object.FindObjectOfType<Board>().GetComponent<Board>();
+        audioSource = GetComponent<AudioSource>();
 	}
 
     public void MoveOffBoard(Vector3 target)
@@ -40,6 +46,11 @@ public class EnemyDeath : MonoBehaviour {
     IEnumerator DieRoutine()
     {
         yield return new WaitForSeconds(deathDelay);
+
+        if (audioSource != null && deathClip != null)
+        {
+            audioSource.PlayOneShot(deathClip);
+        }
 
         Vector3 offscreenPos = transform.position + offscreenOffset;
 

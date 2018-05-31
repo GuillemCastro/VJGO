@@ -264,7 +264,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7c266d572b6538644bf41aa9e6b6d8bf, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -440,6 +440,8 @@ MonoBehaviour:
   iTweenDelay: 0
   easeType: 11
   moveTime: 1
+  deathClip: {fileID: 8300000, guid: 10c3d86edf1713f419dcb2879e2ecd44, type: 3}
+  audio: {fileID: 0}
 --- !u!114 &114727357142488308
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -507,6 +509,7 @@ MonoBehaviour:
   iTweenDelay: 0
   iTweenTime: 0.3
   iTweenEaseType: 1
+  arrowClip: {fileID: 8300000, guid: 7c266d572b6538644bf41aa9e6b6d8bf, type: 3}
 --- !u!114 &114992758135521242
 MonoBehaviour:
   m_ObjectHideFlags: 1
