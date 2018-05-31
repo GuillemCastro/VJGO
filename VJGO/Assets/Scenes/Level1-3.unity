@@ -815,6 +815,17 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: -8.176011
       objectReference: {fileID: 0}
+    - target: {fileID: 114325777470032148, guid: 057549679de5af54daad4cca88a3d01e,
+        type: 2}
+      propertyPath: m_Text
+      value: LEVEL 1-3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114499427865349348, guid: 057549679de5af54daad4cca88a3d01e,
+        type: 2}
+      propertyPath: m_Text
+      value: "Reach the end \nALIVE\n\nSPIDERS x 2\nZOMBIES x 4\nSKELETONS x 1\n\nDIAMONDS
+        x 2"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 057549679de5af54daad4cca88a3d01e, type: 2}
   m_IsPrefabParent: 0
