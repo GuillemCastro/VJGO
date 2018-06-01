@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1598,6 +1598,22 @@ Prefab:
         type: 2}
       propertyPath: m_AnchoredPosition.y
       value: 1.0915527
+      objectReference: {fileID: 0}
+    - target: {fileID: 114499427865349348, guid: 057549679de5af54daad4cca88a3d01e,
+        type: 2}
+      propertyPath: m_Text
+      value: "Reach the end \nALIVE\n\nSPIDERS x 1\nZOMBIES x 1\nSKELETONS x 1\n\nDIAMONDS
+        x 3\nSTICKS x 1"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114325777470032148, guid: 057549679de5af54daad4cca88a3d01e,
+        type: 2}
+      propertyPath: m_Text
+      value: LEVEL 1-2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114969999127806216, guid: 057549679de5af54daad4cca88a3d01e,
+        type: 2}
+      propertyPath: m_Text
+      value: LEVEL 1-2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114581851148038132, guid: 057549679de5af54daad4cca88a3d01e, type: 2}
