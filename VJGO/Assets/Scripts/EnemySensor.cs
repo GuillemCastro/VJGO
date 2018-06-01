@@ -38,8 +38,7 @@ public class EnemySensor : MonoBehaviour {
                 for (int i = 0; i < 3; ++i)
                 {
                     m_nodeToSearch = m_board.FindNodeAt(worldSpacePositionToSearch);
-                    m_currentNode = m_board.FindNodeAt(transform.position);
-                    if (m_nodeToSearch == m_board.PlayerNode && m_currentNode.LinkedNodes.Contains(m_nodeToSearch))
+                    if (m_nodeToSearch == m_board.PlayerNode)
                     {
                         m_foundPlayer = true;
                     }
